@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.paltecno.databaserelationships.onetoone.Player;
 
 @Repository
-public interface PlayerRepository extends JpaRepository<Player,Integer> {
+public interface PlayerRepository extends JpaRepository<Player, Integer> {
 
 }

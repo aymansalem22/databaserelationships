@@ -20,27 +20,25 @@ public class PlayerProfileController {
 
 	@Autowired
 	PlayerProfileService service;
-	
+
 	@GetMapping
 	public List<PlayerProfile> allPlayerProfiles() {
-		return service.allPlayerProfiles();	    
+		return service.allPlayerProfiles();
 	}
 
 	@GetMapping("/{id}")
-	public PlayerProfile getPlayerProfile(@PathVariable int id){
+	public PlayerProfile getPlayerProfile(@PathVariable int id) {
 		return service.getPlayerProfile(id);
 	}
-	
-    @PostMapping
+
+	@PostMapping
 	public PlayerProfile addPlayerProfile(@RequestBody PlayerProfile playerProfile) {
-    	return service.addPlayerProfile(playerProfile);
+		return service.addPlayerProfile(playerProfile);
 	}
-    
- 	@DeleteMapping("/{id}")
+
+	@DeleteMapping("/{id}")
 	public void deletePlayerProfile(@PathVariable int id) {
 		service.deletePlayerProfile(id);
 	}
-	
+
 }
-
-

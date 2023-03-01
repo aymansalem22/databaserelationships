@@ -5,8 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.paltecno.databaserelationships.onetoone.PlayerProfile;
 
-
 @Repository
-public interface PlayerProfileRepository extends JpaRepository<PlayerProfile,Integer> {
+public interface PlayerProfileRepository extends JpaRepository<PlayerProfile, Integer> {
 
 }
