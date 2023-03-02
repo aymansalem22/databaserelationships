@@ -13,6 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.paltecno.databaserelationships.onetomany.bi.RegistrationV2;
 
 @Entity
@@ -30,15 +31,20 @@ public class TournamentV3 {
 
 	@ManyToMany
 	@JoinTable(name = "tournament_categories", joinColumns = @JoinColumn(name = "tournament_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
+	@JsonIgnoreProperties("tournaments")
 	private List<Category> playingCategories = new ArrayList<>();
 
 	public void addCategory(Category category) {
 		playingCategories.add(category);
+		// set up bidirectional relationship
+		category.getTournaments().add(this);
 	}
 
 	public void removeCategory(Category category) {
 		if (playingCategories != null)
 			playingCategories.remove(category);
+		// //update bidirectional relationship
+		category.getTournaments().remove(this);
 	}
 
 	public void addRegistration(RegistrationV2 reg) {
